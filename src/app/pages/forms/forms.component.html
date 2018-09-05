@@ -1,0 +1,96 @@
+<br>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                State
+            </th>
+            <th>
+                Class if true
+            </th>
+            <th>
+                Class if false
+            </th>
+        </tr>
+        <tr>
+            <td>
+                The control has been visited.
+            </td>
+            <td>
+                <code>ng-touched</code>
+            </td>
+            <td>
+                <code>ng-untouched</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                The control's value has changed.
+            </td>
+            <td>
+                <code>ng-dirty</code>
+            </td>
+            <td>
+                <code>ng-pristine</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                The control's value is valid.
+            </td>
+            <td>
+                <code>ng-valid</code>
+            </td>
+            <td>
+                <code>ng-invalid</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<hr>
+<h3>Formulario en Template</h3>
+<!-- ngNativeValidate -->
+<form #form="ngForm" (ngSubmit)="sendTemplateForm(form)">
+    <input #nameForm1="ngModel" name="nameForm1" [(ngModel)]="userForm1.nameForm1" type="text" placeholder="Escribe tu nombre" required>
+    <input #pass1Form1="ngModel" name="pass1Form1" [(ngModel)]="userForm1.pass1Form1" type="password" placeholder="Contraseña" required>
+    <input #pass2Form1="ngModel" name="pass2Form1" [(ngModel)]="userForm1.pass2Form1" type="password" placeholder="Repite tu contraseña" required>
+    <p style="color:red" *ngIf="equalPasswordForm1(pass1Form1, pass2Form1)">Las contraseñas deben de ser iguales</p>
+
+    <input type="submit" value="Enviar">
+</form>
+<br>
+<button (click)="resetOkTemplateForm(form)">Resetear Bien</button>
+<button (click)="resetNokTemplateForm(form)">Resetear Mal</button>
+
+<br>
+<br>
+<hr>
+
+<h3>Formulario Reactivo </h3>
+<form ngNativeValidate [formGroup]="form2" (ngSubmit)="sendDataForm()">
+    <fieldset formGroupName="completedNameForm2" style="border:1px solid gray;padding: 20px">
+        <legend style="font-size: 18px">Nombre Completo</legend>
+        <input formControlName="name" type="text" placeholder="Nombre">
+        <div style="margin-top:10px">
+            <input formControlName="surname" type="text" placeholder="Apellido">
+            <p *ngIf="form2.get('completedNameForm2.surname').errors?.noDisponibleApellido" style="color:red;font-weight:bold">Apellido no disponible</p>
+            <p *ngIf="form2.get('completedNameForm2.surname').value != '' && form2.get('completedNameForm2.surname').dirty && form2.get('completedNameForm2.surname').status == 'PENDING'">Buscando usuario ...</p>
+            <p *ngIf="form2.get('completedNameForm2.surname').value != '' && form2.get('completedNameForm2.surname').touched && form2.get('completedNameForm2.surname').status == 'VALID'" style="color:green; font-weight:bold">Apellido disponible</p>
+        </div>
+    </fieldset>
+    <br>
+    <input formControlName="pass1Form2" type="password" placeholder="Contraseña">
+    <input formControlName="pass2Form2" type="password" placeholder="Repite tu contraseña">
+    <br>
+    <fieldset formArrayName="skills" style="margin-top: 10px; border: 1px solid gray;padding: 20px">
+        <legend style="font-size: 18px">Competencias</legend>
+        <input *ngFor="let skill of form2.get('skills').controls ; let i = index" [formControlName]="i" type="text" placeholder="Añade una competencia" style="display:block; margin-bottom:5px">
+        <button (click)="addSkill()">Añadir skill</button>
+    </fieldset>
+    <br>
+    <input type="submit" value="Enviar">
+</form>
+<br>
+<button (click)="resetOkDataForm()">Resetear Bien</button>
+<button (click)="resetNokDataForm()">Resetear Mal</button>

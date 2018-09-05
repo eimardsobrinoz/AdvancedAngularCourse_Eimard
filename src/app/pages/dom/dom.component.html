@@ -1,0 +1,31 @@
+<h3>ElementRef</h3>
+<p #elementoP>Soy un p</p>
+
+
+<h3>TemplateRef - ViewRef</h3>
+<p>Aquí hay un ngTemplate con una lista de colores esperando ser utilizado si no se cumple la condición y proyctado en un ng-container gracias a la directiva *ngTemplateOutlet
+</p>
+
+<ng-template #colourList>
+    <ul>
+        <li>Rojo</li>
+        <li>Verde</li>
+        <li>Amarillo</li>
+        <li>Azul</li>
+    </ul>
+</ng-template>
+<ng-container *ngTemplateOutlet="colourList"></ng-container>
+
+<p>A continuación se mostrará una lista con skills si se cumple una condición, y si no se proyectará aquí la anterior lista de colores</p>
+<div *ngIf="true else colourList">
+    <ul>
+        <li>Html</li>
+        <li>Css</li>
+        <li>Js</li>
+        <li>Angular</li>
+    </ul>
+</div>
+
+<h3>ViewContainerRef</h3>
+<p>Aquí hay un ng-container esperando ser proyectado</p>
+<ng-container #ngContainer></ng-container>

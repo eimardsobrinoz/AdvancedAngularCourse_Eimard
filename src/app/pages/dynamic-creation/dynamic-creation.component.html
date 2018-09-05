@@ -1,0 +1,43 @@
+<p>
+    Añado y elimino componentes en tiempo de ejecución</p>
+<ol>
+    <li>Ciclo de vida: AfterContentInit</li>
+    <li>Creación de Factoría</li>
+    <li>Referencia a una vista donde se proyectará el contendio</li>
+    <li>Asociar factoría a esta vista</li>
+    <li>Manipulación y acceso a todos los recursos del componente</li>
+    <li>Destruir el componente</li>
+</ol>
+<hr>
+<h3>Utilidad</h3>
+<h4>¿Por qué?</h4>
+<p> <span style="font-weight:bold">Pregunta: </span>¿No acabo de entender que uso tiene crear el componente desde TypeScript en lugar de por ejemplo añadirlo al template con un ngIf y crearlo y destruirlo dependiendo de la condición?</p>
+<p><span style="font-weight:bold">Respuesta: </span>El típico ejemplo es la creación de formularios de contenido y estructura variable, que vienen dados por un servidor. El servidor te puede pasar todas las preguntas, el tipo de input, etc, y para estos
+    casos lo más apropiado es crearlos de forma dinámica. Intentar gestionar eso desde el template sería, como mínimo, complejo.</p>
+<br>
+<h4>Sacar provecho de componentes dinámicos</h4>
+<p><span style="font-weight:bold">Respuesta: </span>Para elementos de UI que se usan de forma puntual y que son reutilitzables a los largo de toda la app (alerts, vistas modales, etc), así como en elementos que el usuario puede añadir/eliminar dinámicamente
+    (por ejemplo en un editor de contenido, donde el usuario puede "abrir"nuevos objetos y para cada uno se crea un nuevo tab, o una tabla donde el usuario puede añadir columnas...)</p>
+<p>Utiliza componentes dinámicos siempre que tu aplicación pueda o no mostrar cierto componente. Por ejemplo como comenta Enrique, en alertas, en diálogos, en modales y también por ejemplo en menús de acciones el típico lateral para crear/editar.</p>
+
+<hr>
+<h3>Ejemplo: Modal (Aparece/Desaparece) - Comunicación Output</h3>
+<button (click)="addDynamicModal()">Abrir modal</button>
+<br>
+<ng-container #modalContainer></ng-container>
+
+<hr>
+<h3>Ejemplo: Modal Accesible (Aparece/Desaparece) - Comunicación Servicio</h3>
+<button (click)="addAccesibleDynamicModal()">Abrir accesible modal</button>
+<br>
+
+<hr>
+<h3>Ejemplo: Varios componentes dinámicos agregados</h3>
+<label for="" style="margin-right:5px">Título del nuevo componente</label>
+<input #titleComp type="text" placeholder="Título">
+<br>
+<button (click)="addDynamicComponent(titleComp.value)">Añadir componente</button>
+<br>
+<!-- *ngFor="let component of newComponents" -->
+
+<ng-container #dynamicComponentContainer></ng-container>

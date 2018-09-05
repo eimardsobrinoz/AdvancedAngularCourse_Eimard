@@ -1,0 +1,44 @@
+<p>Ir a documentaicón de Angular <a href="https://angular.io/api/common/http/HttpClient#get">aquí</a></p>
+<h2>Get</h2>
+<h3>ResponseType</h3>
+<hr>
+<ol>
+    <li>text</li>
+    <li>blob</li>
+    <li>arraybuffer</li>
+    <li>json</li>
+</ol>
+<button class="btn" (click)="loadDataResponseTypeText()"> Obtener datos: text </button>
+<br>
+<button class="btn" (click)="loadDataResponseTypeBlob()"> Obtener datos: blob </button>
+<br>
+<button class="btn" (click)="loadDataResponseTypeArrayBuffer()"> Obtener datos: arraybuffer </button>
+<br>
+<button class="btn" (click)="loadDataResponseTypeJson()"> Obtener datos: json </button>
+
+<br>
+<h3>Datos Obtenidos de ResponseType</h3>
+<p style="color:red; font-weight:bold">*Consultar en consola los datos</p>
+<div *ngIf="dataResponseType">
+    <p>{{ dataResponseType | json }</p>
+</div>
+<br>
+
+<h3>Observe</h3>
+<hr>
+<ol>
+    <li>response</li>
+    <li>body</li>
+    <li>events</li>
+</ol>
+<button class="btn" (click)="loadDataObserveResponse()"> Obtener datos: response </button>
+<button class="btn" (click)="loadDataObserveBody()"> Obtener datos: body </button>
+<button class="btn" (click)="loadDataObserveEvents()"> Obtener datos: events </button>
+<br>
+<p style="color:red; font-weight:bold">*Consultar en consola los datos</p>
+
+
+<h2>Progress Events</h2>
+<p>Una nueva característica de HttpClient es posibilidad de escuchar eventos a lo largo del ciclo de vida de la petición</p>
+<button class="btn" (click)="loadData()">Enviar datos</button>
+<p style="color:red; font-weight:bold">*Consultar el progreso de los eventos en consola</p>

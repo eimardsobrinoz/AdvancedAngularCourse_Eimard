@@ -1,0 +1,8 @@
+<div class="fondo-negro">
+    <div class="modalContent">
+        <h3>Soy una modal dinámica {{ type | uppercase }}</h3>
+        <p>Para eliminarme lanzo un evento output que avisa a mi componente padre, el cual usa mi objeto
+            <span style="color:green; font-weight:bold">ComponentRef</span> para destruir esta modal con el método <span style="color:blue; font-weight:bold">destroy()</span></p>
+        <ng-content select="button"></ng-content>
+    </div>
+</div>

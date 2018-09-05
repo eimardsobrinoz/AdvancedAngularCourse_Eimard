@@ -1,0 +1,61 @@
+<ol>
+    <li>
+        <h3>ViewChildren</h3>
+    </li>
+    <li>
+        <h3>ContentChildren</h3>
+    </li>
+    <li>
+        <h3>QueryList</h3>
+    </li>
+    <li>
+        <h3>Parent Injection</h3>
+    </li>
+</ol>
+
+<ul>
+    <li>Componentes genéricos</li>
+    <li>Estilos gestionados desde el padre</li>
+    <li>Funcionalidad y acceso a recursos disponible en componente padre</li>
+    <li>Versión mínima: 1.4</li>
+</ul>
+
+
+<app-hijo>
+    <h1 header>Hijo 1 (Proyectado por atributo)</h1>
+    <button class="rojo">Enviar </button>
+    <h3 #titulo class="rojo">Formo parte del hijo pero estoy en el padre, y mi funcionalidad (hover: cambio de color) y estilos se llevaron a cabo en el padre</h3>
+
+    <span #spanPadre class="rojo">Soy span del padre y estoy proyectado por referencia de template</span>
+
+    <fieldset style="padding:20px; border: 1px solid gray">
+        <legend>Soy un contenedor del padre y me inyecto en el hijo a través del ngContent general sin uso de referencias de template</legend>
+        <h1>Soy h1</h1>
+        <h2>Soy h2</h2>
+        <h3>Soy h3</h3>
+    </fieldset>
+</app-hijo>
+
+<br>
+
+<app-hijo>
+    <h1 header>Hijo 2 - (Proyectado por atributo)</h1>
+</app-hijo>
+
+<br>
+<app-hijo>
+    <h1 header>Hijo 3 - (Proyectado por atributo)</h1>
+</app-hijo>
+
+
+<hr>
+<h3>ContentChildren</h3>
+<p>Injección de tres componentes hijos en otro componente para que sea proyectado, y desde este tenga acceso a estos componentes proyectados a través de ContentChildren y QueryList para manejarlos como listas.</p>
+<span style="color">*Ciclo de Vida: AfterContentInit</span>
+<hr>
+
+<app-padre>
+    <app-hijo></app-hijo>
+
+    <app-hijo></app-hijo>
+</app-padre>

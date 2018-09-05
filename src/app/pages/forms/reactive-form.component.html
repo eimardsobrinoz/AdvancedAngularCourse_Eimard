@@ -1,0 +1,58 @@
+<!-- FORMULARIO   -->
+<form ngNativeValidate [formGroup]="reactiveForm" (ngSubmit)="sendFormData()">
+
+    <!-- FORMGROUP - COMPLETED NAME -->
+    <fieldset formGroupName="completedName">
+        <legend>Nombre Completo</legend>
+
+        <!-- FORMGCONTROL - NAME -->
+        <input formControlName="name" type="text" placeholder="Nombre">
+
+        <!-- FORMGCONTROL - SURNAME -->
+        <input formControlName="surname" type="text" placeholder="Apellido">
+    </fieldset>
+
+    <br>
+    <br>
+
+    <!-- FORMCONTROL - MAIL -->
+    <input formControlName="mail" type="text" placeholder="Correo" class="mail">
+    <p *ngIf="reactiveForm.get('mail').errors?.correoNoDisponible && reactiveForm.get('mail').value.length > 0" style="color:red;font-weight:bold">Correo no disponible</p>
+    <p *ngIf="reactiveForm.get('mail').value != '' && reactiveForm.get('mail').dirty && reactiveForm.get('mail').status == 'PENDING'">Buscando correo ...</p>
+    <p *ngIf="reactiveForm.get('mail').value != '' && reactiveForm.get('mail').touched && reactiveForm.get('mail').status == 'VALID'" style="color:green; font-weight:bold">Correo disponible</p>
+
+
+    <br>
+
+    <!-- FORMCONTROL - PASSWORD 1 -->
+    <input formControlName="password1" type="text" placeholder="Contraseña">
+    <!-- FORMCONTROL - PASSWORD 2 -->
+    <input formControlName="password2" type="text" placeholder="Repite tu contraseña">
+
+    <br>
+
+    <!-- FORMARRAY - ARRAY DE SKILLS -->
+    <fieldset formArrayName="skills">
+        <legend>Competencias</legend>
+        <button (click)="addSkill()">Añadir skill</button>
+        <button (click)="addDisabledSkill()">Añadir skill deshabilitado</button>
+
+        <hr>
+
+        <div *ngFor="let skill of reactiveForm.get('skills').controls; let i = index">
+            <!-- FORMCONTROL DINÁMICO - SKILL -->
+            <input [formControlName]="i" type="text" placeholder="Añade una competencia" class="d-iblock">
+            <button (click)="removeSkill(i)" class="d-iblock">Eliminar skill</button>
+            <button *ngIf="skill.disabled" (click)="skill.enable()" class="d-iblock">Habilitar Skill</button>
+            <button *ngIf="skill.enabled" (click)="skill.disable()" class="d-iblock">Deshabilitar Skill</button>
+        </div>
+        <hr>
+    </fieldset>
+    <br>
+
+    <!--ENVÍO DE FORMULARIO -->
+    <input type="submit" value="Enviar">
+</form>
+<br>
+<button (click)="resetOkDataForm()">Resetear Bien</button>
+<button (click)="resetNokDataForm()">Resetear Mal</button>

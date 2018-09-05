@@ -1,0 +1,123 @@
+<h2>Estructura, Activated Route y LoadChildren</h2>
+<h3>Activated route</h3>
+<p>Servicio muy útil para exprimir el enrutado en Angular</p>
+<br>
+<table style="margin-left:20px;">
+    <tbody>
+        <tr>
+            <th>
+                Property
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <code>url</code>
+            </td>
+            <td>
+                <p> An <code>Observable</code> of the route path(s), represented as an array of strings for each part of the route path.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>data</code>
+            </td>
+            <td>
+                <p> An <code>Observable</code> that contains the <code>data</code> object provided for the route. Also contains any resolved values from the <a href="guide/router#resolve-guard">resolve guard</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>paramMap</code>
+            </td>
+            <td>
+                <p> An <code>Observable</code> that contains a <a href="api/router/ParamMap">map</a> of the required and <a href="guide/router#optional-route-parameters">optional parameters</a> specific to the route. The map supports retrieving single and
+                    multiple values from the same parameter.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>queryParamMap</code>
+            </td>
+            <td>
+                <p> An <code>Observable</code> that contains a <a href="api/router/ParamMap">map</a> of the <a href="guide/router#query-parameters">query parameters</a> available to all routes. The map supports retrieving single and multiple values from the
+                    query parameter.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>fragment</code>
+            </td>
+            <td>
+                <p> An <code>Observable</code> of the URL <a href="guide/router#fragment">fragment</a> available to all routes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>outlet</code>
+            </td>
+            <td>
+                <p> The name of the <code><a href="api/router/RouterOutlet" class="code-anchor">RouterOutlet</a></code> used to render the route. For an unnamed outlet, the outlet name is <em>primary</em>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>routeConfig</code>
+            </td>
+            <td>
+                <p> The route configuration used for the route that contains the origin path.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>parent</code>
+            </td>
+            <td>
+                <p> The route's parent <code><a href="api/router/ActivatedRoute" class="code-anchor">ActivatedRoute</a></code> when this route is a <a href="guide/router#child-routing-component">child route</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>firstChild</code>
+            </td>
+            <td>
+                <p> Contains the first <code><a href="api/router/ActivatedRoute" class="code-anchor">ActivatedRoute</a></code> in the list of this route's child routes.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <code>children</code>
+            </td>
+            <td>
+                <p> Contains all the <a href="guide/router#child-routing-component">child routes</a> activated under the current route.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<h4>Enviar datos</h4>
+<p>
+    Es muy útil cuando se quiere pasar información más pesada que un simple id o dato específico. En este proyecto se ha utilizado para enviar el título de cada página.
+</p>
+
+<br>
+<h4>LoadChildren</h4>
+<p>
+    Muy útil para cargar las rutas hijas sólo cuando se requiere y se accede a ellas. Supone una notable mejora de rendimiento y peso de la app.</p>
+<br>
+<h4>CanDeActivate</h4>
+<p>Advierte al usuario antes de abandonar de página (ruta) de acuerdo a una lógica (Por ejemplo: Faltan datos del formulario por rellenar)</p>
+<p>Hay un ejemplo con la navegación del componente de Formularios y un guard FormValid, el cual le advertirá al usuario antes de abandonar la página acerca de warnings de su formulario</p>
+
+<br>
+<h4>CanLoad</h4>
+<p>Permite o no cargar el módulo con las rutas hijas cuando se utiliza lazyload a través de loadchildren</p>
+<p>Ejemplo aplicado en la sección de animaciones, que al tener rutas hijas te pregunta a través de un confirm para decidir si cargar el módulo con las rutas hijas o no.</p>
+
+<br>
+<h4>Deactivate y actviate</h4>
+<p>El evento (activate) y (deactivate) asociado al router-outlet se activa cuando se produce una navegacioón de entrada y de salida respectivamente</p>
+<p>Capturando el evento se puede acceder a todo tipo de infotmación acerca del componente que se va a inyectar.</p>
+<p>Ejemplo en page.component.html y page.component.ts. (Mirar en consola)</p>

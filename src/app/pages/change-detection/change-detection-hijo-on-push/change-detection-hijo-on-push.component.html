@@ -1,0 +1,68 @@
+<br>
+<h2 style="text-decoration:underline; margin:10px 0 10px 0">Manipulación de datos en el propio componente con la estrategia</h2>
+<br>
+
+<fieldset style="padding:20px;border:3px solid blue">
+    <legend>Comunicación simple</legend>
+    <p>Al manipular los datos desde el propio hijo lanzando cualquier evento (Output, click, ...) atomáticamente se lanza el detector de cambios, ignorando de este modo la estrategia OnPush</p>
+    <p>Al crear nuevas referencias (2º Botón), se ignora estrategia OnPush, y se lanza el detector de cambios</p>
+    <input #addSkillInput type="text" placeholder="Añade skill">
+    <button (click)="addSkillWithOnPush.emit(addSkillInput.value)">Añadir con método push</button>
+    <button (click)="addSkillWithNewReference.emit(addSkillInput.value)">Añadir creando nueva referencia</button>
+    <br>
+
+    <ul>
+        <li *ngFor="let skill of skills"> {{ skill }} </li>
+    </ul>
+    <br>
+    <p>Uso de función detectChanges() para detectar los cambios </p>
+    <button (click)="detectChanges()">Detectar cambios</button>
+</fieldset>
+
+<br>
+
+<fieldset style="padding:20px;border:3px solid pink">
+    <legend>Comunicación Observables</legend>
+    <p>Si manipularamos los elementos del servicio desde el propio componente, al igual que orría en la comunicación simple al lanzarse eventos click, Outputs, y demás, se ignoraría la estrategia OnPush al detectar Angular los eventos y lanzar la detección
+        automática de cambios.
+    </p>
+    <ol>
+        <li>
+            <h4>Subscripción en .ts - Instancia en propio componente</h4>
+            <p>Me subscribo desde el padre a un objeto observable desde el .ts</p>
+            <p>Efectivamente, se aplica la estrategia OnPush y no se detectan cambios hasta que se avise con la función makForChek()</p>
+            <br>
+            <p *ngIf="user">
+                Nombre de Usuario: <span style="color:green"> {{ user.name }} </span>
+            </p>
+            <br>
+        </li>
+        <li>
+            <h4>Subscripción en template - AsyncPipe</h4>
+            <p>Me subscribo desde el template del hijo con el pipe async a un objeto observable</p>
+            <p>Al usar el pipe async, el template espera ser bindeado y lanza el detector de cambios automático, por lo que se ignora la estrategia OnPush</p>
+            <br>
+            <p *ngIf="_changeDetectionService.$user2 | async as user">
+                Nombre de Usuario: <span style="color:green"> {{ user.name }} </span>
+            </p>
+            <br>
+        </li>
+    </ol>
+
+    <p>Si se trata de un observable usar ChangeDetector.markForCheck() para detectar los cambios </p>
+    <button (click)="detectChangesObservable()">Detectar cambios</button>
+</fieldset>
+
+<br>
+
+<fieldset style="padding:20px;border:1px solid gray">
+    <legend>Activar/Desactivar Estrategia de Cambios OnPush()</legend>
+    <p>Mediante el método detach()/reattach() se puede desactivar o reactivar respectivamente el comportamieto de la detección de cambios para ese componente.
+    </p>
+    <button (click)="detachStrategy()">Desactivar Estrategia Cambios OnPush()</button>
+    <button (click)="reattachStrategy()">Activar Estrategia Cambios OnPush()</button>
+
+</fieldset>
+
+<h3 *ngIf="activatedOnPush" style="font-weight:bold; color:green">Estrategia de Cambios OnPush Activada </h3>
+<h3 *ngIf="!activatedOnPush" style="font-weight:bold; color: red">Estrategia de Cambios OnPush Desactivada </h3>

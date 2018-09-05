@@ -1,0 +1,22 @@
+<h3>
+    Componente Padre que contiene el scroll</h3>
+
+<app-scroll (scroll)="scroll($event)" (window:scroll)="windowScroll($event)"></app-scroll>
+<br>
+<hr>
+<h3>Scroll de la ventana</h3>
+<ol>
+    <li>
+        <h6>Desde template</h6>
+        <p>Desde cualquier elemento del template</p>
+        <p style="color:brown">app-scroll (window:scroll)="windowScroll($event)"></p>
+    </li>
+    <li>
+        <h6>Desde Componente mediante @HostListener</h6>
+        <p>Método más correcto</p>
+    </li>
+</ol>
+
+<hr>
+<h3>Usando servicio Scroll - debouncTime y auditTime de RxJS</h3>
+<p>Evita lanzar evento cada pixel que cambie</p>

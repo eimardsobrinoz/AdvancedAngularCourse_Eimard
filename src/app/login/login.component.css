@@ -1,0 +1,88 @@
+.contentForm {
+    background: transparent;
+}
+
+.loginForm {
+    margin-top: 40%;
+}
+
+.inputForm {
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    text-align: right;
+}
+
+.inputForm:focus {
+    background: transparent;
+    border-bottom: 5px solid white;
+}
+
+.inputForm.pass {
+    width: 75%;
+}
+
+.inputForm::placeholder {
+    color: white;
+    opacity: 0.4;
+}
+
+.enterButton {
+    border-radius: 0px;
+    background: black;
+    border: none;
+    width: 42%;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn-googleplus {
+    background: #c3002f;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.login-register {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    padding: 10% 0;
+    position: fixed;
+}
+
+.login-box {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.login-box .footer {
+    width: 100%;
+    left: 0px;
+    right: 0px;
+}
+
+.login-box .social {
+    display: block;
+    margin-bottom: 30px;
+}
+
+#recoverform {
+    display: none;
+}
+
+.login-sidebar {
+    padding: 0px;
+    margin-top: 0px;
+}
+
+.login-sidebar .login-box {
+    right: 0px;
+    position: absolute;
+    height: 100%;
+}

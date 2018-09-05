@@ -1,0 +1,43 @@
+<p>Tanto Promises como Observables nos ayudarán a trabajar con las funcionalidades asincrónicas en JavaScript. Son muy similares en la mayoría de los casos, sin embargo, existen algunas diferencias entre los dos, las promesas son valores que se resolverán
+    de manera asynchronous , como las llamadas http. Por otro lado, los observables tratan con la secuencia de eventos asincrónicos. Las principales diferencias son las siguientes:</p>
+
+<h3>Promesa</h3>
+<ul>
+    <li>Devuelve un sólo valor</li>
+    <li>No cancelable</li>
+    <li>Código más legible con try/cath y async / await</li>
+</ul>
+
+<br>
+
+<h3>Observable</h3>
+<ul>
+    <li>Trabaja con múltiples valores a lo largo del tiempo</li>
+    <li>Puede interrumpir</li>
+    <li>Admite operadores de mapa, filtro, reducción y similares</li>
+    <li>Usar extensiones reactivas (RxJS)</li>
+    <li>Una matriz cuyos elementos llegan de forma asincrónica a lo largo del tiempo</li>
+</ul>
+<br>
+<table style="margin-left:20px">
+    <thead>
+        <tr>
+            <th align="left">Type</th>
+            <th align="left">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><code>next</code></td>
+            <td align="left">Required. A handler for each delivered value. Called zero or more times after execution starts.</td>
+        </tr>
+        <tr>
+            <td align="left"><code>error</code></td>
+            <td align="left">Optional. A handler for an error notification. An error halts execution of the observable instance.</td>
+        </tr>
+        <tr>
+            <td align="left"><code>complete</code></td>
+            <td align="left">Optional. A handler for the execution-complete notification. Delayed values can continue to be delivered to the next handler after execution is complete.</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+<ul>
+    <li>
+        <h3>Lazyload</h3>
+        <p>Enrutado -> loadchildren</p>
+    </li>
+    <li>
+        <h3>Importar librearías específicas</h3>
+        <p>Importar el recurso específico que se necesita en lugar de una librería completa.</p>
+    </li>
+    <li>
+        <h3>
+            Build en producción
+        </h3>
+        <p>Esta técnica es la más sencilla de implementar, simplemente cuando vamos hacer el build (compilar los archivos Angular) para subirlo a producción, tenemos que añadir el siguiente parámetro (Si el proyecto lo hemos creado usando Angular cli):</p>
+        <p style="padding:20px; background: #2a3e5212"><span style="font-weight:bold">ng build --prod</span></p>
+        <p>Con este parámetro le estamos indicando al compilador de Angular que se optimice para que el tamaño de los archivos compilados sea menor y por tanto que carguen antes.</p>
+    </li>
+    <li>
+        <h3>ServerSideRendering y ClientSideRendering</h3>
+        <p>¿Que es server side rendering? Server side rendering (SSR) significa que el los scripts pueden ser ejecutados en un servidor para que cuando un usuario abra la página estén ya cargados, aumentando el rendimiento. La otra opción, la más habitual,
+            es client side rendering, simplemente significa que el propio usuario carga los scripts en su ordenador. La desventaja principal de server side rendering es que se realizan más llamadas a servidor y por tanto navegar por la web es un poco
+            más lento, pero la carga inicial es mucho más rápida que client side rendering.</p>
+    </li>
+</ul>
+
+<h2>Conclusiones</h2>
+<p>Aunque se puede optimizar aún más las aplicaciones Anagular mediante web workers (ejecutar la lógica de Angular en un thread aparte), es más complicado de implementar que las técnicas que he enseñado anteriormente. En mi caso con estas optimizaciones
+    he logrado hacer que la web de Angular cargue en menos de 3 segundos la primera vez que se abre (antes tardaba más de 10 segundos), y que cargue casi instantáneamente cuando la tenemos cargada en la caché (antes tardaba unos segundos).</p>

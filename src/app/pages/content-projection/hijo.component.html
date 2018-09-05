@@ -1,0 +1,13 @@
+<fieldset style="border:1px solid gray; padding:20px">
+    <legend>Componente Hijo</legend>
+
+    <ng-content select="[header]">
+    </ng-content>
+    <span class="rojo">Soy span del componente hijo</span>
+    <br>
+    <ng-content select="spanPadre"></ng-content>
+    <br>
+    <ng-content></ng-content>
+    <br>
+    <ng-content select="button"></ng-content>
+</fieldset>

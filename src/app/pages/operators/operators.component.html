@@ -1,0 +1,64 @@
+<p>Los operadores son el corazón de RxJs y se encuentran fuertemente influenciados por algunas características de la programación funcional. RxJs posee cientos de operadores categorizados según su utilidad y que nos permitirán realizar casi cualquier cosa.
+    Filtrado de datos, transformaciones e incluso uniones entre varios streams.</p>
+<h3>¿Qué son los operadores?</h3>
+<p>Los operadores de RxJs son funciones que pueden ser encadenadas en lo que llamamos la cadena o pipeline de operadores y que se sitúan entre medias del Observable (productor de la información) y el Observer (consumidor de la misma) con el objetivo de filtrar,
+    transformar o combinar los valores del Observable/Observables.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th align="left">Area</th>
+            <th align="left">Operators</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left">Creation</td>
+            <td align="left"><code>from</code> ,
+                <code>fromPromise</code> ,
+                <code>fromEvent</code> ,
+                <code>of</code></td>
+        </tr>
+        <tr>
+            <td align="left">Combination</td>
+            <td align="left"><code>combineLatest</code> ,
+                <code>concat</code> ,
+                <code>merge</code> ,
+                <code>startWith</code> ,
+                <code>withLatestFrom</code> ,
+                <code>zip</code></td>
+        </tr>
+        <tr>
+            <td align="left">Filtering</td>
+            <td align="left"><code>debounceTime</code> ,
+                <code>distinctUntilChanged</code> ,
+                <code>filter</code> ,
+                <code>take</code> ,
+                <code>takeUntil</code></td>
+        </tr>
+        <tr>
+            <td align="left">Transformation</td>
+            <td align="left"><code>bufferTime</code> ,
+                <code>concatMap</code> ,
+                <code>map</code> ,
+                <code>mergeMap</code> ,
+                <code>scan</code> ,
+                <code>switchMap</code></td>
+        </tr>
+        <tr>
+            <td align="left">Utility</td>
+            <td align="left"><code>tap</code></td>
+        </tr>
+        <tr>
+            <td align="left">Multicasting</td>
+            <td align="left"><code>share</code></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<h4>Operadores de filtrado</h4>
+<p>Como su propio nombre indica son operadores para el filtrado de los valores emitidos por el Observable. Son uno de los tipos de operadores más sencillos y fáciles de utilizar ya que simplimente toman o rechazan ciertos valores según los criterios de filtrado
+    que cada operador aplica. Vamos a ver un pipeline únicamente con operadores de filtrado, aunque vaya por delante que lógicamente los operadores pueden ser mezclados al margen de su categoría.</p>
+<img src="" alt="">
+<br>
+<h3></h3>

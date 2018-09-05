@@ -1,0 +1,27 @@
+<h1>Using Resolve</h1>
+
+<p>Datos cargados a través del servicio route y su Resolver que llama un servicio que trae los datos antes de cargar el componente</p>
+<p>Es útil cuando tienes una lista de elementos y accedes a uno de ellos a través del enrutado pasando como parámetro su id para ver sus detalles en el componente de detalle</p>
+<p>y en este componente recoges el parámetro y haces una llamada a servicio para obtener los datos. De este modo se cargaría los datos después del componente en sí
+</p>
+<p>Mediante la esta clase mycustomResolver que implementa el servicio Resolve, te permite acceder a la información de enrutado de tipo ActivateRouterSnapshot entre otros y hacer la llamada a servicio con ese id y obtener los datos, de modo que podrían estar
+    disponible estos desde el componente, antes de que este se cargue.</p>
+<p>Se establece una key para almacenar estos datos en this.route.snapshot.data['nombre-de-mi-key']</p>
+<p>Si nos fijamos, en ese mismo nivel se guarda los datos que se meten en el atributo data a la hora de navegar.</p>
+
+<br>
+<ng-container *ngIf="data">
+    <ng-container *ngIf="!data.error else paramsErr">
+        <h4>{{data.title}} de {{data.country}}</h4>
+        <ul>
+            <li *ngFor="let city of data.cities">
+                <p> {{ city }} </p>
+            </li>
+        </ul>
+    </ng-container>
+</ng-container>
+
+
+<ng-template #paramsErr>
+    <p style="color:red; font-weight:bold"> *{{data.error}} </p>
+</ng-template>

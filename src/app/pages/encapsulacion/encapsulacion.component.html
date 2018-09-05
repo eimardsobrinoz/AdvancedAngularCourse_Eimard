@@ -1,0 +1,69 @@
+<h2>Tres tipos de encapsulación</h2>
+<ol>
+    <li>
+        None
+    </li>
+    <li>
+        Emulada
+    </li>
+    <li>
+        Nativa
+    </li>
+</ol>
+
+<div>
+    <h3>Encapsulación None</h3>
+    <div style="margin-left:20px">
+        <h6>encapsulation: viewEncapsulation.None</h6>
+        <p>
+            Si el componente utiliza esta encapsulación, sus estilos asociados serán globales, es decir, compartidos por toda la aplicación, pudiéndose utilizar en cualquier componente. En la imagen adjunta, el contenedor del padre situado en la parte inferior lleva
+            una clase propia del componente hijo que lo pintaría de azul sólo en el caso de que este (componente hijo) tenga la encapsulación a none.
+        </p>
+        <br>
+        <!-- ************* MOSTRAR ******************** -->
+        <div class="redChildClass" style="padding:20px; border:2px solid black">
+            <p>
+                Soy el contenedor del hijo con encapsulation None
+            </p>
+            <app-hijo-none></app-hijo-none>
+        </div>
+        <!-- ************* MOSTRAR ******************** -->
+        <br>
+    </div>
+</div>
+
+<div>
+    <h3>Encapsulación Emulada</h3>
+    <div style="margin-left:20px">
+
+        <h6>encapsulation.viewEncapsulation.Emulated</h6>
+        <p>
+            Encapsulación de estilos por defecto de angular. Aisla a los componentes de manera que sus estilos solo podrán ser adoptados por el propio componente. En el ejemplo el componente hijo utiliza una clase del padre que nunca le dará estilo si tiene este
+            tipo de encapsulación.
+        </p>
+        <br>
+
+        <!-- ************* MOSTRAR ******************** -->
+        <app-padre-emulado></app-padre-emulado>
+        <!-- ************* MOSTRAR ******************** -->
+
+        <br>
+    </div>
+</div>
+
+<div>
+    <h3>Encapsulación Nativa</h3>
+    <div style="margin-left:20px">
+        <h6>encapsulation: viewEncapsulation.Native</h6>
+        <p>
+            En el ejemplo, el componente hijo que usa la clase del padre que lo pone rojo, está rojo porque el padre tiene la encapsulación nativa, la cual permite que sus componentes hijos si lo hereden, PERO SÓLO LOS HIJOS y en cascada. Se produce el mismo aislamiento
+            que la emulada pero con esta peculiaridad de herencia. <span style="color:red">Además no es soportada con ie11.</span>
+        </p>
+        <br>
+
+        <!-- ************* MOSTRAR ******************** -->
+        <app-padre-native></app-padre-native>
+        <!-- ************* MOSTRAR ******************** -->
+
+    </div>
+</div>

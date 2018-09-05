@@ -1,0 +1,11 @@
+<br>
+<fieldset style="padding:20px; border:1px solid gray">
+    <legend>Componente {{ title }} creado dinámicamente</legend>
+    <ng-content></ng-content>
+    <ng-content></ng-content>
+
+    <button (click)="removeComponent()" style="margin-bottom:10px">Eliminar componente</button>
+
+    <ng-content></ng-content>
+
+</fieldset>

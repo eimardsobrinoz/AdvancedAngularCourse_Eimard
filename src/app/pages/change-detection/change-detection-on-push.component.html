@@ -1,0 +1,44 @@
+<h2 style="text-decoration:underline; margin:10px 0 10px 0">
+    Manipulación de datos en otro componente</h2>
+
+<fieldset style="padding:20px;border:3px solid blue">
+    <legend>Comunicación simple</legend>
+    <p>Al manipular los elementos desde otro componente, se comprueba que efectivamente hace efecto la estrategia OnPush</p>
+    <p>Al crear nuevas referencias (2º Botón), se ignora estrategia OnPush, y se lanza el detector de cambios</p>
+
+    <input #addSkillInput type="text" placeholder="Añade skill">
+    <button (click)="addSkillWithOnPush(addSkillInput.value)">Añadir con método push</button>
+    <button (click)="addSkillWithNewReference(addSkillInput.value)">Añadir creando nueva referencia</button>
+</fieldset>
+<br>
+
+
+<fieldset style="padding:20px;border:3px solid pink">
+    <legend>Comunicación Observables</legend>
+    <p>Al manipular los elementos desde otro componente, se comprueba que efectivamente hace efecto la estrategia OnPush</p>
+    <p>Al crear nuevas referencias (2º Botón), se ignora estrategia OnPush, y se lanza el detector de cambios</p>
+    <ol>
+        <li>
+            <h3>Sin AsyPipe</h3>
+            <input #changeName type="text" placeholder="Nombre">
+            <button (click)="setUser(changeName.value)">Cambiar nombre (obj en servicio)</button>
+            <button (click)="setUserWithNewReference(changeName.value)">Cambiar nombre (nuevo objeto - referencia)</button>
+            <hr>
+        </li>
+        <li>
+            <h3>Con AsyPipe</h3>
+            <input #changeName2 type="text" placeholder="Nombre">
+            <button (click)="setUser2(changeName2.value)">Cambiar nombre (obj en servicio)</button>
+            <button (click)="setUserWithNewReference2(changeName2.value)">Cambiar nombre (nuevo objeto - referencia)</button>
+        </li>
+    </ol>
+    <p>Al instanciar el servicio desde el padre, y pasar los datos obtenidos desde el padre al hijo por @Input(), se tiene en cuenta si se ha utilizado el mismo objeto, o si se ha creado referencia nueva. De modo que si es el mismo objeto al que se modifica
+        valor, como sabemos, la estrategia OnPush funciona correctamente. Si se pasa un nuevo objeto, es decir, creándose nueva referencia, se activaría la detección automática de cambios como ya sabemos. Si en lugar de habernos instanciado en el padre,
+        hubiésemos instanciado el servicio en el hijo, al hacer la subscripción, se asignaría como nuevo valor modificando la variable sin instanciar ningún nuevo objeto (<span style="color:blue">this.user = data</span>), por lo que funcionaría correctamente
+        la estrategia OnPush en ambos casos.
+    </p>
+</fieldset>
+<br>
+
+<app-change-detection-hijo-on-push [skills]="skills" [user]="user" (addSkillWithOnPush)="addSkillWithOnPush($event)" (addSkillWithNewReference)="addSkillWithNewReference($event)">
+</app-change-detection-hijo-on-push>

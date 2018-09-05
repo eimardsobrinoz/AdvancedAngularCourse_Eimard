@@ -1,0 +1,80 @@
+<p>Además de una directiva que funciona como atributo, se puede asociar su selector a una clase de modo que la directiva lance cualquier acción sobre todos los elementos que tengan cierta clase (selector de esa directiva).</p>
+<ul>
+    <li>Decoradores: HostListener & HostBinding</li>
+    <li>Selectores: Clases, etiquetas, atributos, etc.</li>
+    <li>Construcor y Servicios: Renderer, Renderer2, ...</li>
+</ul>
+<h4>Servicio Renderer</h4>
+<p>Es muy buena práctica utilizarlo, en lugar de manipular el elemento del DOM directamente pues de lo contrario no sería compatiblesi en un futuro queremos mudar de plataforma</p>
+<p>Consultar documentación <a href="https://angular.io/api/core/Renderer">aquí</a></p>
+
+<ol>
+    <li>
+        <h3>Directiva de atributo</h3>
+        <p borderBlue>Soy un p y tengo la directiva borderBlue que me pone un borde azul</p>
+    </li>
+    <br>
+    <li>
+        <h3>Directiva asociada a clase y HostListener</h3>
+        <p>Esta directiva eliminará del DOM a todos los elementos que tengan la clase active (borde verde) al hacer click sobre ellos.</p>
+        <p>Llevo la clase active y si clicas sobre no ocurrirá nada</p>
+        <p class="active">Llevo la clase active y si clicas sobre mí me eliminaré</p>
+        <p>Llevo la clase active y si clicas sobre mí no ocurrirá nada</p>
+        <p class="active">Llevo la clase active y si clicas sobre mí me eliminaré</p>
+    </li>
+    <br>
+    <li RemoveActive2>
+        <h3>Simulando Directiva asociada a clase y HostListener</h3>
+        <p>Esta directiva esta situada en el contenedor padre y accede a todos los elementos p y escucha su evento click. Si llevan la clase active2 le aplicara funcionalidad (los elimina)</p>
+        <p class="active2">Soy p y si llevo clase active2 al hacer click sobre mi me eliminare</p>
+        <p>Soy p y si llevo clase active2 al hacer click sobre mi me eliminare</p>
+
+    </li>
+    <br>
+    <li>
+        <h3>Directiva asociada al valor de un atributo personalizado</h3>
+        <p bordeRojo="true">Si mi atributo bordeRojo está a true, el borde rojo</p>
+        <p bordeRojo="false">Si mi atributo bordeRojo está a true, el borde rojo</p>
+    </li>
+    <br>
+    <li BkgToSpans>
+        <h3>QuerySelector de una directiva y captura de eventos de los elementos del DOM</h3>
+        <p>La directiva aplicada al siguiente div pone un background rojo a todos sus span y escucha el evento dobleclik sobre los h4 añadiéndoles la clase active</p>
+        <fieldset style="padding:30px;border:1px solid gray">
+            <legend style="font-size:18px">Soy un div que contiene la directiva que da background rojo a todos mis span</legend>
+            <h4>Soy un h4</h4>
+            <span style="display:block">Soy un span</span>
+            <span style="display:block">Soy un span</span>
+            <h4>Soy un h4</h4>
+            <span style="display:block">Soy un span</span>
+            <h4>Soy un h4</h4>
+        </fieldset>
+    </li>
+    <li>
+        <h3>Hostbinding y parámetro de entrada</h3>
+        <p color="blue">Soy un p y llevo una directiva 'color' que a los 3 segundos me pondrá el borde del color que le indique como parámetro y añadirá la clase active o no dependiendo de una variable con @HostBinding. Además añade el atributo rol con el valor de una
+            variable gracias a otro @HostBinding.
+        </p>
+    </li>
+    <li>
+        <h3>NgSwitch</h3>
+        <h5>Lista de Skills - Uso de SwitchCase</h5>
+        <div style="padding-left: 20px">
+            <p *ngFor="let skill of skills" [ngSwitch]="skill">
+                <span *ngSwitchCase="'Html'" style="font-weight:bold;color:red"> {{ skill }} </span>
+                <span *ngSwitchCase="'Angular'" style="font-weight:bold;color:yellow"> {{ skill }} </span>
+                <span *ngSwitchCase="'CSS'" style="font-weight:bold;color:green"> {{ skill }}  </span>
+                <span *ngSwitchCase="'Javascript'" style="font-weight:bold;color:blue"> {{ skill }} </span>
+                <span *ngSwitchCase="'JQuery'" style="font-weight:bold;color:purple"> {{ skill }}  </span>
+            </p>
+        </div>
+    </li>
+    <li>
+        <h3>NgNonBindable</h3>
+        <h5 ngNonBindable>p con valor: <span style="color:blue">{{ bindableVariable }}</span> y usando directiva ngNonbindable</h5>
+        <p ngNonBindable>-- Resultado: {{ bindableVariable }}</p>
+
+        <h5 ngNonBindable>p con valor: <span style="color:blue">{{ bindableVariable }}</span> y sin usar la directiva ngNonbindable</h5>
+        <p>-- Resultado: {{ bindableVariable }}</p>
+    </li>
+</ol>

@@ -1,0 +1,55 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar" style="background: #c30e2e;">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav" style="background: #c30e2e;">
+            <ul id="sidebarnav">
+                <!-- <li class="user-profile">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <img [src]="usuario.img | imagen" alt="user" />
+                        <span class="hide-menu"> {{ usuario.nombre }} </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLinkActive="active" routerLink="/perfil">Perfil </a></li>
+                        <li><a href="javascript:void()">My Balance</a></li>
+                        <li><a href="javascript:void()">Inbox</a></li>
+                        <li><a routerLinkActive="active" routerLink="/account-settings">Account Setting</a></li>
+                        <li><a (click)="_usuarioService.logout()" class="pointer">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li> -->
+
+                <li *ngFor="let menu of _sidebar.menu">
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false" style="color:white">
+                        <i [class]="menu.icono" style="color:white"></i>
+                        <span class="hide-menu" style="color:white"> {{ menu.titulo }} </span></a>
+                    <ul aria-expanded="false" class="collapse">
+
+                        <li *ngFor="let submenu of menu.submenu">
+                            <ng-container *ngIf="submenu.params == '' else withParams">
+                                <a routerLinkActive="active" [routerLink]="[ submenu.url ]" style="color:white"> {{ submenu.titulo }} </a>
+                            </ng-container>
+                            <ng-template #withParams>
+                                <a class="ss" routerLinkActive="active" [routerLink]="[submenu.url, submenu.params ]" style="color:white"> {{ submenu.titulo }} </a>
+                            </ng-template>
+                        </li>
+
+                        <!-- <li><a href="index2.html">Analytical</a></li>
+                        <li><a href="index3.html">Demographical</a></li>
+                        <li><a href="index4.html">Modern</a></li> -->
+                    </ul>
+                </li>
+
+
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->

@@ -1,0 +1,33 @@
+<h3>Animations</h3>
+<hr>
+<h4>Elige una animación de las disponibles</h4>
+<p style="color:red">*Aparecerá un componente con el efecto de esa animación</p>
+
+<br>
+<ol>
+    <li *ngFor="let animation of animations">
+        <a href="#" [routerLink]="animation.path"> {{ animation.name }} </a>
+    </li>
+</ol>
+<button (click)="addTemplateToOutlet(o, myH1)">Añadir template al outlet</button>
+
+<router-outlet #o="outlet"></router-outlet>
+
+
+<ng-template #myH1>
+    <h1>Probandooooo</h1>
+</ng-template>
+
+
+<h3>ANIMACIONES CON PARÁMETRO</h3>
+
+<label for="">Selecciona el color que se pasará como parámetro a la animación</label>
+<select [(ngModel)]="animationColour" name="" id="">
+    <option value="red">Rojo</option>
+    <option value="yellow">Amarillo</option>
+    <option value="blue">Azul</option>
+    <option value="green">Verde</option>
+</select>
+<hr>
+<div (click)="triggerAnimation()" [@animationWithParameter]="{value: triggerValue, params: {animationColour: animationColour}}" style="padding:20px; border:3px solid black" role="button">Contenedor de animación con parámetro. Haz click para lanzar animación
+</div>

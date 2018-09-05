@@ -1,0 +1,13 @@
+<h2>Fichero .txt</h2>
+<hr>
+
+<input id="inputFile" type="file" value="Selecciona .txt" (change)="uploadFile(
+  $event)" />
+<br>
+<br>
+<br>
+<p>{{fileText}}</p>
+
+<br>
+<p>Apertura de fichero mediante javascript</p>
+<button (click)="openFile('fichero.txt')"> Abrir fichero </button>
